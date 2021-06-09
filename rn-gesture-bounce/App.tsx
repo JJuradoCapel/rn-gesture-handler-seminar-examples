@@ -18,8 +18,6 @@ import Animated, {
 const COLORS = ['#222222', '#BBCDE5', '#1C5D99', '#639FAB'];
 
 export default function App() {
-  const imagePinch = React.createRef();
-  const imageRotation = React.createRef();
 
   const translationX = useSharedValue(0);
   const translationY = useSharedValue(0);
@@ -56,9 +54,9 @@ export default function App() {
 
   return (
     <View style={styles.container} pointerEvents='box-none'>
-      <PanGestureHandler ref={imagePinch} onGestureEvent={panHandler}>
+      <PanGestureHandler onGestureEvent={panHandler}>
         <Animated.View>
-          <TapGestureHandler ref={imageRotation} onGestureEvent={tapHandler} numberOfTaps={1} >
+          <TapGestureHandler onGestureEvent={tapHandler} numberOfTaps={1} >
             <Animated.View style={[{ width: 100, height: 100, borderRadius: 50, backgroundColor: COLORS[colorIndex] }, ballStyle]} />
           </TapGestureHandler>
         </Animated.View>

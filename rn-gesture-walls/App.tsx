@@ -4,16 +4,12 @@ import {
   GestureEvent,
   PanGestureHandler,
   PanGestureHandlerEventPayload,
-  TapGestureHandler,
-  TapGestureHandlerEventPayload,
 } from 'react-native-gesture-handler';
 import Animated, {
   cancelAnimation,
-  runOnJS,
   useAnimatedGestureHandler, useAnimatedReaction,
   useAnimatedStyle,
   useSharedValue, withDecay,
-  withSpring,
 } from 'react-native-reanimated';
 import {SafeAreaView} from "react-native-safe-area-context";
 
@@ -25,9 +21,6 @@ export default function App() {
 
   const translationX = useSharedValue(0);
   const translationY = useSharedValue(0);
-
-  const velocityX = useSharedValue(0);
-  const velocityY = useSharedValue(0);
 
   const panHandler = useAnimatedGestureHandler<GestureEvent<PanGestureHandlerEventPayload>, { initialPositionX: number; initialPositionY: number }>({
     onStart: (_, ctx) => {
