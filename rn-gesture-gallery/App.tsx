@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { StyleSheet, Image, View } from 'react-native';
 import {
   GestureEvent, PinchGestureHandler, PinchGestureHandlerEventPayload,
   RotationGestureHandler,
@@ -16,7 +16,7 @@ export default function App() {
   const rotation = useSharedValue(0);
   const scale = useSharedValue(1);
 
-  const rotationHandler = useAnimatedGestureHandler<GestureEvent<RotationGestureHandlerEventPayload>>({
+  const rotationHandler = useAnimatedGestureHandler<GestureEvent<RotationGestureHandlerEventPayload>, { initialRotation: number }>({
     onStart: (_, ctx) => {
       ctx.initialRotation = rotation.value;
     },
@@ -25,7 +25,7 @@ export default function App() {
     },
   });
 
-  const pinchHandler = useAnimatedGestureHandler<GestureEvent<PinchGestureHandlerEventPayload>>({
+  const pinchHandler = useAnimatedGestureHandler<GestureEvent<PinchGestureHandlerEventPayload>, { initialState: number }>({
     onStart: (_, ctx) => {
       ctx.initialScale = scale.value;
     },
