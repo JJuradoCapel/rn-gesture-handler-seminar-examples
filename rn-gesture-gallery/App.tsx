@@ -25,7 +25,7 @@ export default function App() {
     },
   });
 
-  const pinchHandler = useAnimatedGestureHandler<GestureEvent<PinchGestureHandlerEventPayload>, { initialState: number }>({
+  const pinchHandler = useAnimatedGestureHandler<GestureEvent<PinchGestureHandlerEventPayload>, { initialScale: number }>({
     onStart: (_, ctx) => {
       ctx.initialScale = scale.value;
     },
